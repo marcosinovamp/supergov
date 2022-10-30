@@ -17,8 +17,8 @@
             border: 12px solid #f3f3f3;
             border-radius: 50%;
             border-top: 12px solid #444444;
-            width: 70px;
-            height: 70px;
+            width: 150px;
+            height: 150px;
             animation: spin 1s linear infinite;
         }
           
@@ -64,14 +64,14 @@
         document.onreadystatechange = function() {
             if (document.readyState !== "complete") {
                 document.querySelector(
-                  "body").style.visibility = "hidden";
+                  "bdy").style.visibility = "hidden";
                 document.querySelector(
                   "#loader").style.visibility = "visible";
             } else {
                 document.querySelector(
                   "#loader").style.display = "none";
                 document.querySelector(
-                  "body").style.visibility = "visible";
+                  "bdy").style.visibility = "visible";
             }
         };
     </script>
