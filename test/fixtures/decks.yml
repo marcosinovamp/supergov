@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  siorg: 1
+  logo: MyString
+  sigla: MyString
+  avaliacoes: 1
+  aprovacao: 1.5
+  media_etapas: 1.5
+  digitalizacao: 1.5
+  porc_botao_iniciar: 1.5
+  media_duracao: 1.5
+  qtd_nao_estimados: 1
+  number: 1
+  identificacao: MyString
+
+two:
+  nome: MyString
+  siorg: 1
+  logo: MyString
+  sigla: MyString
+  avaliacoes: 1
+  aprovacao: 1.5
+  media_etapas: 1.5
+  digitalizacao: 1.5
+  porc_botao_iniciar: 1.5
+  media_duracao: 1.5
+  qtd_nao_estimados: 1
+  number: 1
+  identificacao: MyString

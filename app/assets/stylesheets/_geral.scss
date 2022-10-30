@@ -1,0 +1,27 @@
+body{
+    background-image:linear-gradient(135deg, green, yellow);
+    background-color: rgba(250, 250, 250 ,0.5);
+    background-blend-mode: lighten;
+    font-family: 'Fira Sans', sans-serif;
+    color: darkgreen;
+}
+h1, h2, h3{
+    color:#003300;
+    text-shadow: 0.5px 0.5px 1px lightyellow;
+    font-weight:800;
+    margin-bottom:2%;
+}
+h4, h5, h6{
+    color:#012a01;
+    text-shadow: 0.5px 0.5px 1px lightyellow;
+    font-weight:800;
+    margin-bottom:1%;
+}
+a{
+    text-decoration:none;
+}
+span{
+    color: lightyellow;
+    font-weight: 700;
+    text-shadow: 0.8px 0.8px 2px darkgreen;
+}

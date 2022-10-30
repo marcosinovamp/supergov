@@ -1,0 +1,54 @@
+<div class="container">
+    <%if @game.hands.size%2 != 0%>
+        <h3 class="game-anounce">Esta é a carta que você vai jogar nesta mão <%=@player1.nome%>.</h3> <h3 class="game-anounce">Escolha a característica que você quer comparar:</h3>
+        <br>
+        <form action="/result/<%=@hand.id%>">
+            <div class="card card-basic w25 h98 f10">
+                <div class="card-code f8"><%=@card.identificacao%></div>
+                <img class="logo" height="90px" src="<%=@card.deck.logo%>">
+                <br>
+                <p class="name-row f12"><%=@card.nome%></p>
+                <p class="cd-row grow just"><input style="height:10px" type="radio" id="total_de_avaliacoes" name="caracteristica" value="total_de_avaliacoes" checked> <label for="total_de_avaliacoes">Total de avaliações: <%=nmb_form(@card.avaliacoes.nil? ? 0: @card.avaliacoes)%></label></p>
+                <p class="cd-row yrow just"><input style="height:10px" type="radio" id="aprovacao_do_servico" name="caracteristica" value="aprovacao_do_servico"> <label for="aprovacao_do_servico">Aprovação do serviço: <%=@card.aprovacao.nil? ? "0%" : percent(@card.aprovacao)%></label></p>
+                <p class="cd-row grow just"><input style="height:10px" type="radio" id="quantidade_de_etapas" name="caracteristica" value="quantidade_de_etapas"> <label for="quantidade_de_etapas">Quantidade de etapas: <%=@card.etapas%></label></p>
+                <p class="cd-row yrow just"><input style="height:10px" type="radio" id="indice_de_digitalizacao" name="caracteristica" value="indice_de_digitalizacao"> <label for="indice_de_digitalizacao">Índice de digitalização: <%=@card.digitalizacao%>%</label></p>
+                <p class="cd-row grow just"><input style="height:10px" type="radio" id="botao_iniciar" name="caracteristica" value="botao_iniciar"> <label for="botao_iniciar">Tem botão iniciar? <%=@card.botao_iniciar == true ? "Sim" : "Não"%></label></p>
+                <p class="cd-row yrow just"><input style="height:10px" type="radio" id="tempo_de_espera" name="caracteristica" value="tempo_de_espera"> <label for="tempo_de_espera">Tempo de espera (dias): <%=@card.duracao == 999999999 ? "Não estimado" : @card.duracao == 0 ? "Imediato" : nmb_form(@card.duracao)%></label></p>
+            </div>
+            <br>
+            <div class="centered"><input class="btn btn-sc" type="submit" value="Escolher"></div>
+            <br>
+        </form>
+    <%else%>
+        <h3 class="game-anounce">Esta é a carta que você vai jogar nesta mão <%=@player1.nome%>.</h3>
+        <%if @compchar == "total_de_avaliacoes"%>
+            <h3 class="game-anounce">A característica escolhida pelo seu oponente foi "Total de Avaliações".</h3>
+        <%elsif @compchar == "aprovacao_do_servico"%>
+            <h3 class="game-anounce">A característica escolhida pelo seu oponente foi "Aprovação do Serviço".</h3>
+        <%elsif @compchar == "quantidade_de_etapas"%>
+            <h3 class="game-anounce">A característica escolhida pelo seu oponente foi "Quantidade de Etapas".</h3>
+        <%elsif @compchar == "indice_de_digitalizacao"%>
+            <h3 class="game-anounce">A característica escolhida pelo seu oponente foi "Índice de Digitalização".</h3>
+        <%elsif @compchar == "botao_iniciar"%>
+            <h3 class="game-anounce">A característica escolhida pelo seu oponente foi "Tem Botão Iniciar?"</h3>
+        <%else%>
+            <h3 class="game-anounce">A característica escolhida pelo seu oponente foi "Tempo de Espera"</h3>
+        <%end%>
+        <br>
+        <div class="card card-basic w25 h98 f10">
+            <div class="card-code f8"><%=@card.identificacao%></div>
+            <img class="logo" height="90px" src="<%=@card.deck.logo%>">
+            <br>
+            <p class="name-row f12"><%=@card.nome%></p>
+            <p class="cd-row grow">Total de avaliações: <%=nmb_form(@card.avaliacoes.nil? ? 0: @card.avaliacoes)%></p>
+            <p class="cd-row yrow">Aprovação do serviço: <%=@card.aprovacao.nil? ? "0%" : percent(@card.aprovacao)%></p>
+            <p class="cd-row grow">Quantidade de etapas: <%=@card.etapas%></p>
+            <p class="cd-row yrow">Índice de digitalização: <%=@card.digitalizacao%>%</p>
+            <p class="cd-row grow">Tem botão iniciar? <%=@card.botao_iniciar == true ? "Sim" : "Não"%></p>
+            <p class="cd-row yrow">Tempo de espera (dias): <%=@card.duracao == 999999999 ? "Não estimado" : @card.duracao == 0 ? "Imediato" : nmb_form(@card.duracao)%></p>
+        </div>
+        <br>
+        <div class="centered"><a class="btn btn-sc" href="/result/<%=@hand.id%>?caracteristica=<%=@compchar%>">Ver Resultado</a></div>
+        <br>
+    <%end%>
+</div>

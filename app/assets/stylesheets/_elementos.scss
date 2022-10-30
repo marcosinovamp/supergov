@@ -1,0 +1,127 @@
+.card-basic{
+    margin:auto;
+    box-shadow: 2px 2px 2px grey;
+    border:1px solid black;
+    border-radius:5px;
+    padding:10px;
+    background-color:#ECF0F1;
+    .card-code{
+        position:absolute;
+        top:0;
+        margin:0;
+        width:100%;
+        font-weight:700;
+        z-index:1000
+    }
+    .false-logo{
+        height:90px;
+        width:90px;
+        margin:auto;
+        border:0.5px solid grey;
+        line-height:90px;
+        text-align:center
+    }
+    .logo{
+        max-width:100%;
+        margin:auto;
+        margin-top:0;
+        border:0.5px solid grey;
+        padding:5px;
+    }
+    .cd-row{
+        text-align:center;
+        font-weight: 700;
+        padding:10px;
+        margin:0;
+    }
+    .grow{
+        background-color:darkgreen;
+        color:white;
+    }
+    .yrow{
+        background-color:lightyellow;
+    }
+    .chosen-green{
+        background-color:darkgreen;
+        color:red;
+        font-weight:1000;
+    }
+    .chosen-yellow{
+        background-color:lightyellow;
+        color:red;
+        font-weight:1000;
+    }
+    .name-row{
+        text-align:center;
+        color:darkgreen;
+        text-shadow:0.2px 0.2px 0.5px #145A32;
+        font-weight:700;
+    }
+}
+.versus{
+    font-size:100px;
+    text-align:center;
+    margin:auto;
+    font-weight:1000;
+    color:lightyellow;
+    text-shadow: 2px 2px 1px darkgreen;
+}
+
+.btn-sc{
+    background-color:lightyellow;
+    color:darkgreen;
+    box-shadow: 2px 2px 1px darkgreen;
+    text-align:center;
+}
+.btn-sc:hover{
+    background-color:darkgreen;
+    color:lightyellow;
+    box-shadow: 2px 2px 1px lightyellow;
+}
+.full-back{
+    text-align:center;
+    height:45vw;
+    margin:auto;
+    display:flex;
+    flex-direction:column
+}
+.win-anounce{
+    font-size:450%;
+    text-shadow: 3px 3px 3px darkgreen;
+    color:lightyellow;
+}
+.game-anounce{
+    text-align:center;
+    margin-bottom:2px;
+    text-shadow: 1px 1px 2px darkgreen;
+    color:lightyellow;
+    letter-spacing: 1px;
+}
+.usual{
+    font-weight:700;
+    text-align:center;
+}
+.st-full-back{
+    text-align:center;
+    height:39.5vw;
+    margin:auto;
+    display:flex;
+}
+.baralho{
+    accent-color: darkgreen;
+}
+#player1{
+    border-radius:10px;
+    border:2px solid darkgreen;
+    color:darkgreen;
+    text-align:center;
+}
+.control-box{
+    box-shadow:2px 2px 1px darkgreen;
+    padding:10px;
+    border: 0.1px solid darkgreen;
+    border-radius:5px;
+    background-color:#BDBDBD;
+
+    margin:auto;
+}

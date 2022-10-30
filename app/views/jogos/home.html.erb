@@ -1,0 +1,31 @@
+<div class="container st-full-back">
+    <br>
+    <div class="control-box w60">
+        <h2 class="game-anounce">Bem vindo ao ServCard</h2>
+        <br>
+        <form action="/game">
+            <label class="usual" for="player1">Para começar o jogo informe o seu nome:</label>
+            <br>
+            <input type="text" id="player1" name="player1">
+            <br>
+            <br>
+            <p class="usual">Escolha as cartas que você quer usar:</p>
+            <div class="row">
+                <div class="col-sm-4">
+                </div>
+                <div style="text-align:right" class="col-sm-2">
+                    <input class="baralho" type="radio" id="servico" name="deck_cartas" value="servico" checked>
+                    <label class="usual" for="servico">Serviços</label><br>
+                </div>
+                <div style="text-align:left" class="col-sm-2">
+                    <input class="baralho" type="radio" id="orgao" name="deck_cartas" value="orgao">
+                    <label class="usual" for="orgao">Órgãos</label><br>
+                </div>
+                <div class="col-sm-4">
+                </div>
+            </div>
+            <br>
+            <input class="btn btn-sc" type="submit" value="Começar o jogo">
+        </form>
+    </div>
+</div>

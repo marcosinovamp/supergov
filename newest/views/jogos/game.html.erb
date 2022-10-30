@@ -1,0 +1,57 @@
+<div class="container">
+<br>
+    <h2 class="game-anounce">Jogo nº <%=@game.id%></h2>
+    <br>
+    <h3 class="game-anounce">Estas são suas cartas:</h4>
+    <br>
+    <br>
+    <%if params[:deck_cartas] == "servico"%>
+        <div class="row">
+            <%@stack1.each do |s|%>
+                <%@card = Card.find(s)%>
+                <div class="col-sm-3">
+                    <div class="card card-basic f11 w100 h98">
+                        <div class="card-code f9"><%=@card.identificacao%></div>
+                        <img class="logo h100p" src="<%=@card.deck.logo%>">
+                        <br>
+                        <p class="name-row f12"><%=@card.nome%></p>
+                        <p class="cd-row grow">Total de avaliações: <%=nmb_form(@card.avaliacoes.nil? ? 0: @card.avaliacoes)%></p>
+                        <p class="cd-row yrow">Aprovação do serviço: <%=@card.aprovacao.nil? ? "0%" : percent(@card.aprovacao)%></p>
+                        <p class="cd-row grow">Quantidade de etapas: <%=@card.etapas%></p>
+                        <p class="cd-row yrow">Índice de digitalização: <%=@card.digitalizacao%>%</p>
+                        <p class="cd-row grow">Tem botão iniciar? <%=@card.botao_iniciar == true ? "Sim" : "Não"%></p>
+                        <p class="cd-row yrow">Tempo de espera (dias): <%=@card.duracao == 999999999 ? "Não estimado" : @card.duracao == 0 ? "Imediato" : nmb_form(@card.duracao)%></p>
+                    </div>
+                </div>
+            <%end%>
+        </div>
+        <br>
+        <p class="centered"><a class="btn btn-sc" href="/hand/<%=@hand.id%>">Vamos Jogar!</a></p>
+        <br>
+    <%else%>
+        <div class="row">
+            <%@stack1.each do |s|%>
+                <%@card = Deck.find(s)%>
+                <div class="col-sm-3">
+                    <div class="card card-basic f10 w100 h98">
+                        <div class="card-code f8"><%=@card.identificacao%></div>
+                        <img class="logo h100p" src="<%=@card.logo%>">
+                        <br>
+                        <p class="name-row f11"><%=@card.nome%></p>
+                        <p class="cd-row grow">Nº de Serviços: <%=@card.cards.size%></p>
+                        <p class="cd-row yrow">Total de avaliações: <%=nmb_form(@card.avaliacoes.nil? ? 0: @card.avaliacoes)%></p>
+                        <p class="cd-row grow">Aprovação Média do Órgão: <%=@card.aprovacao.nil? ? "0%" : percent(@card.aprovacao)%></p>
+                        <p class="cd-row yrow">Média de etapas por serviço: <%=@card.media_etapas.round(2).to_s.gsub(".",",")%></p>
+                        <p class="cd-row grow">Índice de digitalização: <%=@card.digitalizacao.round(2).to_s.gsub(".",",")%>%</p>
+                        <p class="cd-row yrow">% de serviços com botão iniciar? <%=percent(@card.porc_botao_iniciar)%></p>
+                        <p class="cd-row grow">Média de dias de espera: <%=@card.media_duracao.round(2).to_s.gsub(".",",")%></p>
+                        <p class="cd-row yrow">Nº de serviços sem duração estimada: <%=@card.qtd_nao_estimados%></p>
+                    </div>
+                </div>
+            <%end%>
+        </div>
+        <br>
+        <p class="centered"><a class="btn btn-sc" href="/handorg/<%=@hand.id%>">Vamos Jogar!</a></p>
+        <br>
+    <%end%>
+</div>

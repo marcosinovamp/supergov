@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cardp1: 1
+  cardp2: 1
+  winner: 1
+
+two:
+  cardp1: 1
+  cardp2: 1
+  winner: 1

@@ -1,0 +1,43 @@
+create_table "cards", force: :cascade do |t|
+    t.string "nome"
+    t.float "digitalizacao"
+    t.boolean "botao_iniciar"
+    t.integer "api_id"
+    t.float "aprovacao"
+    t.integer "avaliacoes"
+    t.integer "etapas"
+    t.integer "tempo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "unidade"
+    t.integer "duracao"
+    t.integer "deck_id"
+    t.string "identificacao"
+    t.integer "number"
+    t.index ["deck_id"], name: "index_cards_on_deck_id"
+  end
+
+  create_table "decks", force: :cascade do |t|
+    t.string "nome"
+    t.integer "siorg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "logo"
+    t.string "sigla"
+    t.integer "avaliacoes"
+    t.float "aprovacao"
+    t.float "media_etapas"
+    t.float "digitalizacao"
+    t.float "porc_botao_iniciar"
+    t.float "media_duracao"
+  end
+
+@soma = 0
+Deck.all.each do |d|
+    d.cards.each do |c|
+        @soma += c.avaliacoes
+    end
+    d.avaliacoes = @soma.to_f/d.cards.size
+    d.save
+    @soma = 0
+end

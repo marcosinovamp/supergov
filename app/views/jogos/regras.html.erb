@@ -1,0 +1,70 @@
+<div class="container">
+    <br>
+    <h1 class="game-anounce">Como funciona?</h1>
+    <br>
+    <br>
+    <h3 class="game-anounce just">Áreas do Site</h3>
+    <p class="usual just">O site tem três áreas:</p>
+    <ol class="usual just">
+        <li>A área <span>Jogar</span> onde você irá para o jogo propriamente dito (as regras estão explicadas abaixo);</li>
+        <li>A área <span>Ver Cartas</span> onde você analisar em detalhes cada uma das cartas disponíveis; e</li>
+        <li>A área <span>Como Funciona</span>, que é esta onde você se encontra.</li>
+    </ol>
+    <br>
+    <h3 class="game-anounce just">As Cartas</h3>
+    <p class="usual just">O jogo conta com 2 baralhos diferentes, um composto pelos Serviços do Portal gov.br, que conta com <%=nmb_form(Card.all.size)%> cartas, e o outro composto pelos Órgãos presentes no Portal gov.br, com <%=Deck.all.size%> cartas. Você poderá escolher qual vai usar em cada jogo que iniciar. As cartas de cada um dos baralhos consistem de um item (um serviço ou um órgão, dependendo do baralho), e de características mensuráveis em comum entre estes itens (6 características para as cartas de serviços e 8 características para as cartas de órgãos).</p>
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-4">
+            <h6 class="game-anounce">Carta de Serviço:</h6>
+            <div class="card-basic card f10 w80">
+                <div class="card-code f8">Código da Carta</div>
+                <div class="false-logo">Logo do Órgão</div>
+                <br>
+                <p class="name-row f12">Nome do Serviço</p>
+                <p class="cd-row grow">Total de avaliações: ###</p>
+                <p class="cd-row yrow">Aprovação do serviço: ##,##%</p>
+                <p class="cd-row grow">Quantidade de etapas: ##</p>
+                <p class="cd-row yrow">Índice de digitalização: ##,##%</p>
+                <p class="cd-row grow">Tem botão iniciar? Sim/Não</p>
+                <p class="cd-row yrow">Tempo de espera (dias): ###</p>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <h6 class="game-anounce">Carta de Órgão:</h6>
+            <div class="card-basic card f10 w80">
+                <div class="card-code f8">Código da Carta</div>
+                <div class="false-logo">Logo do Órgão</div>
+                <br>
+                <p class="name-row f12">Nome do Órgão</p>
+                <p class="cd-row grow">Número de Serviços: ###</p>
+                <p class="cd-row yrow">Total de avaliações: ###.###</p>
+                <p class="cd-row grow">Aprovação Média do Órgão: ##,##%</p>
+                <p class="cd-row yrow">Média de etapas por serviço: ##,##</p>
+                <p class="cd-row grow">Índice de digitalização: ##,##%</p>
+                <p class="cd-row yrow">% de Serviços com Botão Iniciar: ##,##%</p>
+                <p class="cd-row grow">Média de dias de espera: ##,##</p>
+                <p class="cd-row yrow">Serviços sem Duração Estimada: ###</p>
+            </div>
+        </div>
+        <div class="col-sm-2">
+        </div>
+    </div>
+    <br>
+    <h3 class="game-anounce just">O Jogo</h3>
+    <p class="usual just">ServCard é um jogo de disputa entre cartas que dura até que um dos competidores conquiste todas as cartas. O jogo ocorre da seguinte maneira:</p>
+    <p></p>
+    <h6 class="game-anounce just">Início: distribuição das cartas</h6>
+    <p class="usual just">O jogo começa com a distribuição aleatória de 12 cartas do baralho escolhido para cada um dos jogadores. Estas 12 cartas podem ser visualizadas pelo jogador no início do jogo, mas durante o restante dele só poderá visualizar uma carta, a tirada por ele, por mão.</p>
+    <p></p>
+    <h6 class="game-anounce just">As mãos: a disputa das cartas</h6>
+    <p class="usual just">O jogo começa com cada um dos jogadores tirando, de forma cega e aleatória, uma carta de seu monte. Um dos jogadores irá então escolher por qual característica ele quer que as cartas sejam comparadas (a escolha é feita alternadamente pelos jogadores, com o jogador humano escolhendo a característica na primeira mão, o computador escolhendo na segunda, o jogador humano na terceira e assim por diante).</p>
+    <p class="usual just">Escolhida a característica, as cartas são comparadas e o dono da carta com o melhor desempenho na característica escolhida mantêm a sua carta e ganha a carta do adversário, e as duas cartas são então juntadas ao monte do vencedor, de onde poderão ser vir a ser tiradas para serem usadas futuramente no jogo (as cartas só poderão ser reutilizadas após todas as cartas do monte terem sido usadas pelo menos uma vez).</p>
+    <p class="usual just">Caso as cartas tenham o mesmo valor na característica escolhida, cada jogador mantêm sua própria carta, que voltará ao monte e poderá ser usada futuramente no jogo seguindo as mesmas regras que as cartas de mãos vitoriosas.</p>
+    <p></p>
+    <h6 class="game-anounce just">Final do Jogo</h6>
+    <p class="usual just">As mãos ocorrerão até que um dos jogadores perca todas as cartas de seu monte, quando o jogador adversário é declarado o vencedor.</p>
+</div>
+
+

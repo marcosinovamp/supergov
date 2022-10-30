@@ -1,0 +1,130 @@
+<div class="container">
+    <h3 class="game-anounce"><%=@hand.winner == 0 ? "O jogo empatou." : "O vencedor foi #{Player.find(@hand.winner).nome}."%></h3>
+    <br>
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-3">
+            <p class="usual">A sua carta era:</p>
+            <div style="height:90%" class="card card-basic w100 f8">
+                <div class="card-code f6"><%=@card1.identificacao%></div>
+                <img height="70px" class="logo" src="<%=@card1.logo%>">
+                <p class="name-row f10 mg-bt3 h45p"><%=@card1.nome%></p>               
+                <%if params[:caracteristica] == "numero_de_servicos"%>
+                    <p class="cd-row chosen-green f10">Número de Serviços: <%=@card1.cards.size%></p>
+                <%else%>
+                    <p class="cd-row grow">Número de Serviços: <%=@card1.cards.size%></p>
+                <%end%>
+                <%if params[:caracteristica] == "total_de_avaliacoes"%>
+                    <p class="cd-row chosen-yellow f10">Total de avaliações: <%=nmb_form(@card1.avaliacoes.nil? ? 0: @card1.avaliacoes)%></p>
+                <%else%>
+                    <p class="cd-row yrow">Total de avaliações: <%=nmb_form(@card1.avaliacoes.nil? ? 0: @card1.avaliacoes)%></p>
+                <%end%>
+                <%if params[:caracteristica] == "aprovacao_do_servico"%>
+                    <p class="cd-row chosen-green f10">Aprovação Média do Órgão: <%=@card1.aprovacao.nil? ? "0%" : percent(@card1.aprovacao)%></p>
+                <%else%>
+                    <p class="cd-row grow">Aprovação Média do Órgão: <%=@card1.aprovacao.nil? ? "0%" : percent(@card1.aprovacao)%></p>
+                <%end%>
+                <%if params[:caracteristica] == "quantidade_de_etapas"%>
+                    <p class="cd-row chosen-yellow f10">Média de etapas por serviço: <%=@card1.media_etapas.round(2).to_s.gsub(".",",")%></p>
+                <%else%>
+                    <p class="cd-row yrow">Média de etapas por serviço: <%=@card1.media_etapas.round(2).to_s.gsub(".",",")%></p>
+                <%end%>
+                <%if params[:caracteristica] == "indice_de_digitalizacao"%>
+                    <p class="cd-row chosen-green f10">Índice de digitalização: <%=@card1.digitalizacao.round(2).to_s.gsub(".",",")%>%</p>
+                <%else%>
+                    <p class="cd-row grow">Índice de digitalização: <%=@card1.digitalizacao.round(2).to_s.gsub(".",",")%>%</p>
+                <%end%>
+                <%if params[:caracteristica] == "botao_iniciar"%>
+                    <p class="cd-row chosen-yellow f10">% de serviços com botão iniciar: <%=percent(@card1.porc_botao_iniciar)%></p>
+                <%else%>
+                    <p class="cd-row yrow">% de serviços com botão iniciar: <%=percent(@card1.porc_botao_iniciar)%></p>
+                <%end%>
+                <%if params[:caracteristica] == "tempo_de_espera"%>
+                    <p class="cd-row chosen-green f10">Média de dias de espera: <%=@card1.media_duracao.round(2).to_s.gsub(".",",")%></p>
+                <%else%>
+                    <p class="cd-row grow">Média de dias de espera: <%=@card1.media_duracao.round(2).to_s.gsub(".",",")%></p>
+                <%end%>
+                <%if params[:caracteristica] == "nao_estimado"%>
+                    <p class="cd-row chosen-yellow f10">Nº de serviços sem duração estimada: <%=@card1.qtd_nao_estimados%></p>
+                <%else%>
+                    <p class="cd-row yrow">Nº de serviços sem duração estimada: <%=@card1.qtd_nao_estimados%></p>
+                <%end%>
+            </div>
+        </div>
+        <div class="col-sm-2 versus">
+            X
+        </div>
+        <div class="col-sm-3">
+            <p class="usual">A carta do seu adversário era:</p>
+            <div style="height:90%" class="card card-basic w100 f8">
+                <div class="card-code f6"><%=@card2.identificacao%></div>
+                <img height="70px" class="logo" src="<%=@card2.logo%>">
+                <p class="name-row f10 mg-bt3 h45p"><%=@card2.nome%></p>
+                <%if params[:caracteristica] == "numero_de_servicos"%>
+                    <p class="cd-row chosen-green f10">Número de Serviços: <%=@card2.cards.size%></p>
+                <%else%>
+                    <p class="cd-row grow">Número de Serviços: <%=@card2.cards.size%></p>
+                <%end%>
+                <%if params[:caracteristica] == "total_de_avaliacoes"%>
+                    <p class="cd-row chosen-yellow f10">Total de avaliações: <%=nmb_form(@card2.avaliacoes.nil? ? 0: @card2.avaliacoes)%></p>
+                <%else%>
+                    <p class="cd-row yrow">Total de avaliações: <%=nmb_form(@card2.avaliacoes.nil? ? 0: @card2.avaliacoes)%></p>
+                <%end%>
+                <%if params[:caracteristica] == "aprovacao_do_servico"%>
+                    <p class="cd-row chosen-green f10">Aprovação Média do Órgão: <%=@card2.aprovacao.nil? ? "0%" : percent(@card2.aprovacao)%></p>
+                <%else%>
+                    <p class="cd-row grow">Aprovação Média do Órgão: <%=@card2.aprovacao.nil? ? "0%" : percent(@card2.aprovacao)%></p>
+                <%end%>
+                <%if params[:caracteristica] == "quantidade_de_etapas"%>
+                    <p class="cd-row chosen-yellow f10">Média de etapas por serviço: <%=@card2.media_etapas.round(2).to_s.gsub(".",",")%></p>
+                <%else%>
+                    <p class="cd-row yrow">Média de etapas por serviço: <%=@card2.media_etapas.round(2).to_s.gsub(".",",")%></p>
+                <%end%>
+                <%if params[:caracteristica] == "indice_de_digitalizacao"%>
+                    <p class="cd-row chosen-green f10">Índice de digitalização: <%=@card2.digitalizacao.round(2).to_s.gsub(".",",")%>%</p>
+                <%else%>
+                    <p class="cd-row grow">Índice de digitalização: <%=@card2.digitalizacao.round(2).to_s.gsub(".",",")%>%</p>
+                <%end%>
+                <%if params[:caracteristica] == "botao_iniciar"%>
+                    <p class="cd-row chosen-yellow f10">% de serviços com botão iniciar: <%=percent(@card2.porc_botao_iniciar)%></p>
+                <%else%>
+                    <p class="cd-row yrow">% de serviços com botão iniciar: <%=percent(@card2.porc_botao_iniciar)%></p>
+                <%end%>
+                <%if params[:caracteristica] == "tempo_de_espera"%>
+                    <p class="cd-row chosen-green f10">Média de dias de espera: <%=@card2.media_duracao.round(2).to_s.gsub(".",",")%></p>
+                <%else%>
+                    <p class="cd-row grow">Média de dias de espera: <%=@card2.media_duracao.round(2).to_s.gsub(".",",")%></p>
+                <%end%>
+                <%if params[:caracteristica] == "nao_estimado"%>
+                    <p class="cd-row chosen-yellow f10">Nº de serviços sem duração estimada: <%=@card2.qtd_nao_estimados%></p>
+                <%else%>
+                    <p class="cd-row yrow">Nº de serviços sem duração estimada: <%=@card2.qtd_nao_estimados%></p>
+                <%end%>
+            </div>
+        </div>
+        <div class="col-sm-2">
+        </div>
+    </div>
+    <br>
+    <p class="usual"><%=@hand.winner == 0 ? "Ambos ficam com suas respectivas cartas" : "#{Player.find(@hand.winner).nome} fica com as duas cartas"%>. Você agora tem <%=@st1.size%> cartas e seu adversário tem <%=@st2.size%> cartas</p>
+
+    <div style="text-align:center">
+        <%if @st1.size == 0 || @st2.size == 0%>
+            <%if @st1.size == 0%>
+                <%@game.winner = @game.player2%>
+                <%@game.save%>
+            <%elsif @st2.size == 0%>
+                <%@game.winner = @game.player1%>
+                <%@game.save%>
+            <%end%>
+            <a class="btn btn-sc" href="/final_jogo/<%=@game.id%>">Seguir</a>
+        <%else%>
+            <%@new = Hand.new(game_id:@game.id)%>
+            <%@new.save%>
+            <a class="btn btn-sc" href="/handorg/<%=@new.id%>">Próxima Rodada</a>
+        <%end%>
+    </div>
+    <br>
+    <br>
+</div>

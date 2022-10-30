@@ -1,0 +1,110 @@
+<div class="container">
+    <h3 class="game-anounce"><%=@hand.winner == 0 ? "O jogo empatou." : "O vencedor foi #{Player.find(@hand.winner).nome}."%></h3>
+    <br>
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-3">
+            <p class="usual">A sua carta era:</p>
+            <div style="height:90%" class="card card-basic w100 f8">
+                <div class="card-code f6"><%=@card1.identificacao%></div>
+                <%= image_tag(@card1.deck.logo, :class => "logo", :height => "70px")%>
+                <p class="name-row f10 mg-bt3 h45p"><%=@card1.nome%></p>
+                <%if params[:caracteristica] == "total_de_avaliacoes"%>
+                    <p class="cd-row chosen-green f10">Total de avaliações: <%=nmb_form(@card1.avaliacoes.nil? ? 0: @card1.avaliacoes)%></p>
+                <%else%>
+                    <p class="cd-row grow">Total de avaliações: <%=nmb_form(@card1.avaliacoes.nil? ? 0: @card1.avaliacoes)%></p>
+                <%end%>
+                <%if params[:caracteristica] == "aprovacao_do_servico"%>
+                    <p class="cd-row chosen-yellow f10">Aprovação do serviço: <%=@card1.aprovacao.nil? ? "0%" : percent(@card1.aprovacao)%></p>
+                <%else%>
+                    <p class="cd-row yrow">Aprovação do serviço: <%=@card1.aprovacao.nil? ? "0%" : percent(@card1.aprovacao)%></p>
+                <%end%>
+                <%if params[:caracteristica] == "quantidade_de_etapas"%>
+                    <p class="cd-row chosen-green f10">Quantidade de etapas: <%=@card1.etapas%></p>
+                <%else%>
+                    <p class="cd-row grow">Quantidade de etapas: <%=@card1.etapas%></p>
+                <%end%>
+                <%if params[:caracteristica] == "indice_de_digitalizacao"%>
+                    <p class="cd-row chosen-yellow f10">Índice de digitalização: <%=@card1.digitalizacao%>%</p>
+                <%else%>
+                    <p class="cd-row yrow">Índice de digitalização: <%=@card1.digitalizacao%>%</p>
+                <%end%>
+                <%if params[:caracteristica] == "botao_iniciar"%>
+                    <p class="cd-row chosen-green f10">Tem botão iniciar? <%=@card1.botao_iniciar == true ? "Sim" : "Não"%></p>
+                <%else%>
+                    <p class="cd-row grow">Tem botão iniciar? <%=@card1.botao_iniciar == true ? "Sim" : "Não"%></p>
+                <%end%>
+                <%if params[:caracteristica] == "tempo_de_espera"%>
+                    <p class="cd-row chosen-yellow f10">Tempo de espera (dias): <%=@card1.duracao == 999999999 ? "Não estimado" : @card1.duracao == 0 ? "Imediato" : nmb_form(@card1.duracao)%></p>
+                <%else%>
+                    <p class="cd-row yrow">Tempo de espera (dias): <%=@card1.duracao == 999999999 ? "Não estimado" : @card1.duracao == 0 ? "Imediato" : nmb_form(@card1.duracao)%></p>
+                <%end%>
+            </div>
+        </div>
+        <div class="col-sm-2 versus">
+            X
+        </div>
+        <div class="col-sm-3">
+            <p class="usual">A carta do seu adversário era:</p>
+            <div style="height:90%" class="card card-basic w100 f8">
+                <div class="card-code f6"><%=@card2.identificacao%></div>
+                <%= image_tag(@card2.deck.logo, :class => "logo", :height => "70px")%>
+                <p class="name-row f10 mg-bt3 h45p"><%=@card2.nome%></p>
+                <%if params[:caracteristica] == "total_de_avaliacoes"%>
+                    <p class="cd-row chosen-green f10">Total de avaliações: <%=nmb_form(@card2.avaliacoes.nil? ? 0: @card2.avaliacoes)%></p>
+                <%else%>
+                    <p class="cd-row grow">Total de avaliações: <%=nmb_form(@card2.avaliacoes.nil? ? 0: @card2.avaliacoes)%></p>
+                <%end%>
+                <%if params[:caracteristica] == "aprovacao_do_servico"%>
+                    <p class="cd-row chosen-yellow f10">Aprovação do serviço: <%=@card2.aprovacao.nil? ? "0%" : percent(@card2.aprovacao)%></p>
+                <%else%>
+                    <p class="cd-row yrow">Aprovação do serviço: <%=@card2.aprovacao.nil? ? "0%" : percent(@card2.aprovacao)%></p>
+                <%end%>
+                <%if params[:caracteristica] == "quantidade_de_etapas"%>
+                   <p class="cd-row chosen-green f10">Quantidade de etapas: <%=@card2.etapas%></p>
+                <%else%>
+                    <p class="cd-row grow">Quantidade de etapas: <%=@card2.etapas%></p>
+                <%end%>
+                <%if params[:caracteristica] == "indice_de_digitalizacao"%>
+                    <p class="cd-row chosen-yellow f10">Índice de digitalização: <%=@card2.digitalizacao%>%</p>
+                <%else%>
+                    <p class="cd-row yrow">Índice de digitalização: <%=@card2.digitalizacao%>%</p>
+                <%end%>
+                <%if params[:caracteristica] == "botao_iniciar"%>
+                    <p class="cd-row chosen-green f10">Tem botão iniciar? <%=@card2.botao_iniciar == true ? "Sim" : "Não"%></p>
+                <%else%>
+                    <p class="cd-row grow">Tem botão iniciar? <%=@card2.botao_iniciar == true ? "Sim" : "Não"%></p>
+                <%end%>
+                <%if params[:caracteristica] == "tempo_de_espera"%>
+                    <p class="cd-row chosen-yellow f10">Tempo de espera (dias): <%=@card2.duracao == 999999999 ? "Não estimado" : @card2.duracao == 0 ? "Imediato" : nmb_form(@card2.duracao)%></p>
+                <%else%>
+                    <p class="cd-row yrow">Tempo de espera (dias): <%=@card2.duracao == 999999999 ? "Não estimado" : @card2.duracao == 0 ? "Imediato" : nmb_form(@card2.duracao)%></p>
+                <%end%>
+            </div>
+        </div>
+        <div class="col-sm-2">
+        </div>
+    </div>
+    <br>
+    <p class="usual"><%=@hand.winner == 0 ? "Ambos ficam com suas respectivas cartas" : "#{Player.find(@hand.winner).nome} fica com as duas cartas"%>. Você agora tem <%=@st1.size%> cartas e seu adversário tem <%=@st2.size%> cartas</p>
+
+    <div class="centered">
+        <%if @st1.size == 0 || @st2.size == 0%>
+            <%if @st1.size == 0%>
+                <%@game.winner = @game.player2%>
+                <%@game.save%>
+            <%elsif @st2.size == 0%>
+                <%@game.winner = @game.player1%>
+                <%@game.save%>
+            <%end%>
+            <a class="btn btn-sc" href="/final_jogo/<%=@game.id%>">Seguir</a>
+        <%else%>
+            <%@new = Hand.new(game_id:@game.id)%>
+            <%@new.save%>
+            <a class="btn btn-sc" href="/hand/<%=@new.id%>">Próxima Rodada</a>
+        <%end%>
+    </div>
+    <br>
+    <br>
+</div>
