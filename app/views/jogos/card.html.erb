@@ -48,7 +48,7 @@
             <%elsif params[:id].include?("SIORG")%>
                 <div class="card-basic card w40">
                     <div class="card-code f7"><%=@card.identificacao%></div>
-                    <img class="logo" height="100px"; src="<%=@card.logo%>">
+                    <%= image_tag(@card.logo, :class => "logo", :height => "100px")%>
                     <br>
                     <p class="name-row f14"><%=@card.nome%></p>
                     <p class="cd-row grow f10">Nº de Serviços: <%=@card.cards.size%></p>
@@ -63,7 +63,7 @@
             <%else%>
                 <div class="card-basic card w40">
                     <div class="card-code f7"><%=@card.identificacao%></div>
-                    <img class="logo" height="110px"; src="<%=@card.deck.logo%>">
+                    <%= image_tag(@card.deck.logo, :class => "logo", :height => "110px")%>
                     <br>
                     <p class="name-row f14"><%=@card.nome%></p>
                     <p class="cd-row grow f11">Total de avaliações: <%=nmb_form(@card.avaliacoes.nil? ? 0: @card.avaliacoes)%></p>
