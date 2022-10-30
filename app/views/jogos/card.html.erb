@@ -42,10 +42,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-8 h100">
-            <%if params[:id].nil?%>
+        <%if params[:id].nil?%>
+            <div class="col-sm-8 h100">
                 <div></div>
-            <%elsif params[:id].include?("SIORG")%>
+            </div>
+        <%elsif params[:id].include?("SIORG")%>
+            <div class="col-sm-8 h100">
                 <div class="card-basic card w40">
                     <div class="card-code f7"><%=@card.identificacao%></div>
                     <%= image_tag(@card.logo, :class => "logo", :height => "100px")%>
@@ -60,7 +62,9 @@
                     <p class="cd-row grow f10">Média de dias de espera: <%=@card.media_duracao.round(2).to_s.gsub(".",",")%></p>
                     <p class="cd-row yrow f10">Nº de serviços sem duração estimada: <%=@card.qtd_nao_estimados%></p>
                 </div>
-            <%else%>
+            </div>
+        <%else%>
+            <div class="col-sm-8 h100">
                 <div class="card-basic card w40">
                     <div class="card-code f7"><%=@card.identificacao%></div>
                     <%= image_tag(@card.deck.logo, :class => "logo", :height => "110px")%>
@@ -73,8 +77,8 @@
                     <p class="cd-row grow f11">Tem botão iniciar? <%=@card.botao_iniciar == true ? "Sim" : "Não"%></p>
                     <p class="cd-row yrow f11">Tempo de espera (dias): <%=@card.duracao == 999999999 ? "Não estimado" : @card.duracao == 0 ? "Imediato" : nmb_form(@card.duracao)%></p>
                 </div>
-            <%end%>
-        </div>
+            </div>
+        <%end%>
     </div>
     <br>
     <br>
