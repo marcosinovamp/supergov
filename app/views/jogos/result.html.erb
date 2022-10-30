@@ -36,9 +36,9 @@
                     <p class="cd-row grow">Tem botão iniciar? <%=@card1.botao_iniciar == true ? "Sim" : "Não"%></p>
                 <%end%>
                 <%if params[:caracteristica] == "tempo_de_espera"%>
-                    <p class="cd-row chosen-yellow f10">Tempo de espera (dias): <%=@card1.duracao == 999999999 ? "Não estimado" : @card1.duracao == 0 ? "Imediato" : nmb_form(@card1.duracao).round(2)%></p>
+                    <p class="cd-row chosen-yellow f10">Tempo de espera (dias): <%=@card1.duracao == 999999999 ? "Não estimado" : @card1.duracao == 0 ? "Imediato" : nmb_form(@card1.duracao)%></p>
                 <%else%>
-                    <p class="cd-row yrow">Tempo de espera (dias): <%=@card1.duracao == 999999999 ? "Não estimado" : @card1.duracao == 0 ? "Imediato" : nmb_form(@card1.duracao).round(2)%></p>
+                    <p class="cd-row yrow">Tempo de espera (dias): <%=@card1.duracao == 999999999 ? "Não estimado" : @card1.duracao == 0 ? "Imediato" : nmb_form(@card1.duracao)%></p>
                 <%end%>
             </div>
         </div>
@@ -77,9 +77,9 @@
                     <p class="cd-row grow">Tem botão iniciar? <%=@card2.botao_iniciar == true ? "Sim" : "Não"%></p>
                 <%end%>
                 <%if params[:caracteristica] == "tempo_de_espera"%>
-                    <p class="cd-row chosen-yellow f10">Tempo de espera (dias): <%=@card2.duracao == 999999999 ? "Não estimado" : @card2.duracao == 0 ? "Imediato" : nmb_form(@card2.duracao).round(2)%></p>
+                    <p class="cd-row chosen-yellow f10">Tempo de espera (dias): <%=@card2.duracao == 999999999 ? "Não estimado" : @card2.duracao == 0 ? "Imediato" : nmb_form(@card2.duracao)%></p>
                 <%else%>
-                    <p class="cd-row yrow">Tempo de espera (dias): <%=@card2.duracao == 999999999 ? "Não estimado" : @card2.duracao == 0 ? "Imediato" : nmb_form(@card2.duracao).round(2)%></p>
+                    <p class="cd-row yrow">Tempo de espera (dias): <%=@card2.duracao == 999999999 ? "Não estimado" : @card2.duracao == 0 ? "Imediato" : nmb_form(@card2.duracao)%></p>
                 <%end%>
             </div>
         </div>

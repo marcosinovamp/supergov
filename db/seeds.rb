@@ -6,7 +6,6 @@ url = "https://www.servicos.gov.br/api/v1/servicos"
 rascunho = URI.open(url).read
 servicos = JSON.parse(rascunho)
 
-ids = []
 servicos["resposta"].each do |s|
     if Deck.find_by(siorg:s["orgao"]["id"].gsub("http://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/", "").to_i).nil?
         @org = Deck.new({nome:s["orgao"]["nomeOrgao"], siorg:s["orgao"]["id"].gsub("http://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/", "").to_i, number: 0, logo: "/#{s["orgao"]["id"].gsub("http://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/", "").to_i}.png", sigla: s["orgao"]["nomeOrgao"][(s["orgao"]["nomeOrgao"].index("(")+1)..(s["orgao"]["nomeOrgao"].index(")")-1)], identificacao: "SIORG#{s["orgao"]["id"].gsub("http://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/", "")}"})
@@ -27,24 +26,28 @@ servicos["resposta"].each do |s|
     @card.aprovacao = tot == 0 ? 0 : (pos.to_f/tot)
     @card.avaliacoes = tot
     @card.etapas = s["etapas"].size
-    if s["tempoTotalEstimado"]["ate"].nil? == false
+    if s["tempoTotalEstimado"]["atendimentoImediato"].nil? == false
+        @card.tempo = 0
+        @card.unidade = "dias"
+    elsif s["tempoTotalEstimado"]["naoEstimadoAinda"].nil? == false
+        @card.tempo = 999999
+        @card.unidade = "dias"
+    elsif s["tempoTotalEstimado"]["ate"].nil? == false
         @card.tempo = s["tempoTotalEstimado"]["ate"]["max"].to_i
         @card.unidade = s["tempoTotalEstimado"]["ate"]["unidade"]
     elsif s["tempoTotalEstimado"]["entre"].nil? == false
         @card.tempo = s["tempoTotalEstimado"]["entre"]["max"].to_i
         @card.unidade = s["tempoTotalEstimado"]["entre"]["unidade"]
-    elsif s["tempoTotalEstimado"]["atendimentoImediato"].nil? == false
-        @card.tempo = 0
-        @card.unidade = "dias"
-    else
-        @card.tempo = 999999
-        @card.unidade = "dias"
+    elsif s["tempoTotalEstimado"]["emMedia"].nil? == false
+        @card.tempo = s["tempoTotalEstimado"]["emMedia"]["max"].to_i
+        @card.unidade = s["tempoTotalEstimado"]["emMedia"]["unidade"]
     end
+
     if @card.unidade == "dias" || @card.unidade == "dias-corridos"
         @card.duracao = @card.tempo
     end
     if @card.unidade == "dias-uteis"
-        @card.duracao = @card.tempo + ((@card.tempo/5)+2)
+        @card.duracao = @card.tempo + ((@card.tempo/5)*2)
     end
     if @card.unidade == "minutos"
         @card.duracao = 0
