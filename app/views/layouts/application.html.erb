@@ -20,6 +20,7 @@
             width: 150px;
             height: 150px;
             animation: spin 1s linear infinite;
+            background-color:white;
         }
           
         @keyframes spin {
@@ -64,14 +65,14 @@
         document.onreadystatechange = function() {
             if (document.readyState !== "complete") {
                 document.querySelector(
-                  "control-box").style.visibility = "none";
+                  "body").style.visibility = "none";
                 document.querySelector(
                   "#loader").style.visibility = "visible";
             } else {
                 document.querySelector(
                   "#loader").style.display = "none";
                 document.querySelector(
-                  "control-box").style.visibility = "visible";
+                  "body").style.visibility = "visible";
             }
         };
     </script>
