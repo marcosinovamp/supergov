@@ -12,33 +12,6 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <style>
-        #loader {
-            border: 50px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 50px solid #444444;
-            width: 100px;
-            height: 100px;
-            animation: spin 1s linear infinite;
-            background-color:white;
-            z-index:1000;
-        }
-          
-        @keyframes spin {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-          
-        .center {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-        }
-    </style>
   </head>
   <body>
     <div class="barra">
@@ -61,22 +34,6 @@
       </div>
     </div>
   <div>
-  <div id="loader" class="center"></div>
-    <script>
-        document.onreadystatechange = function() {
-            if (document.readyState !== "complete") {
-                document.querySelector(
-                  "body").style.visibility = "none";
-                document.querySelector(
-                  "#loader").style.visibility = "visible";
-            } else {
-                document.querySelector(
-                  "#loader").style.display = "none";
-                document.querySelector(
-                  "body").style.visibility = "inline";
-            }
-        };
-    </script>
     <%= yield %>
   </body>
 </html>
