@@ -13,7 +13,7 @@
                 <p class="cd-row grow just"><input style="height:10px" type="radio" id="quantidade_de_etapas" name="caracteristica" value="quantidade_de_etapas"> <label for="quantidade_de_etapas">Quantidade de etapas: <%=@card.etapas%></label></p>
                 <p class="cd-row yrow just"><input style="height:10px" type="radio" id="indice_de_digitalizacao" name="caracteristica" value="indice_de_digitalizacao"> <label for="indice_de_digitalizacao">Índice de digitalização: <%=@card.digitalizacao%>%</label></p>
                 <p class="cd-row grow just"><input style="height:10px" type="radio" id="botao_iniciar" name="caracteristica" value="botao_iniciar"> <label for="botao_iniciar">Tem botão iniciar? <%=@card.botao_iniciar == true ? "Sim" : "Não"%></label></p>
-                <p class="cd-row yrow just"><input style="height:10px" type="radio" id="tempo_de_espera" name="caracteristica" value="tempo_de_espera"> <label for="tempo_de_espera">Tempo de espera (dias): <%=@card.duracao == 999999999 ? "Não estimado" : @card.duracao == 0 ? "Imediato" : nmb_form(@card.duracao)%></label></p>
+                <p class="cd-row yrow just"><input style="height:10px" type="radio" id="tempo_de_espera" name="caracteristica" value="tempo_de_espera"> <label for="tempo_de_espera">Tempo de espera (dias): <%=@card.duracao == 999999 ? "Não estimado" : @card.duracao == 0 ? "Imediato" : nmb_form(@card.duracao)%></label></p>
             </div>
             <br>
             <div class="centered"><input class="btn btn-sc" type="submit" value="Escolher"></div>
@@ -45,7 +45,7 @@
             <p class="cd-row grow">Quantidade de etapas: <%=@card.etapas%></p>
             <p class="cd-row yrow">Índice de digitalização: <%=@card.digitalizacao%>%</p>
             <p class="cd-row grow">Tem botão iniciar? <%=@card.botao_iniciar == true ? "Sim" : "Não"%></p>
-            <p class="cd-row yrow">Tempo de espera (dias): <%=@card.duracao == 999999999 ? "Não estimado" : @card.duracao == 0 ? "Imediato" : nmb_form(@card.duracao)%></p>
+            <p class="cd-row yrow">Tempo de espera (dias): <%=@card.duracao == 999999 ? "Não estimado" : @card.duracao == 0 ? "Imediato" : nmb_form(@card.duracao)%></p>
         </div>
         <br>
         <div class="centered"><a class="btn btn-sc" href="/result/<%=@hand.id%>?caracteristica=<%=@compchar%>">Ver Resultado</a></div>
