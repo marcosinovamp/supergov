@@ -20,7 +20,6 @@
             width: 150px;
             height: 150px;
             animation: spin 1s linear infinite;
-            background-color:white;
         }
           
         @keyframes spin {
@@ -65,7 +64,7 @@
         document.onreadystatechange = function() {
             if (document.readyState !== "complete") {
                 document.querySelector(
-                  "body").style.visibility = "none";
+                  "body").style.display = "none";
                 document.querySelector(
                   "#loader").style.visibility = "visible";
             } else {
