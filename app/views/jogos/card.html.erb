@@ -1,94 +1,52 @@
 <div class="container">
 <br>
-    <%if params[:id].nil?%>
-        <div class="row">
-            <div class="col-sm-8">
-            </div>
-            <div class="col-sm-4">
-                <div class="centered font12 w100">
-                    <div class="control-box">
-                        <h6>Escolha a <span>carta de serviço</span> que você quer visualizar:</h6>
+    <div class="row">
+        <div class="col-sm-4 auto">
+            <div class="centered font12 w100">
+                <div class="control-box">
+                    <h6>Escolha a <span>carta de serviço</span> que você quer visualizar:</h6>
+                    <br>
+                    <form action="/intermedium">
+                        <div>
+                            <select class="w80" name="card" id="cards">
+                                <option value="" disabled selected hidden>Escolha uma carta</option>
+                                <%@cards.sort_by{|card| card.identificacao}.each do |c|%>
+                                    <option class="f8" value="<%=c.id%>"><%=c.identificacao%> - <%=c.nome%></option>
+                                <%end%>
+                            </select>
+                        </div>
                         <br>
-                        <form action="/intermedium">
-                            <div>
-                                <select class="w80" name="card" id="cards">
-                                    <option value="" disabled selected hidden>Escolha uma carta</option>
-                                    <%@cards.sort_by{|card| card.identificacao}.each do |c|%>
-                                        <option class="f8" value="<%=c.id%>"><%=c.identificacao%> - <%=c.nome%></option>
-                                    <%end%>
-                                </select>
-                            </div>
-                            <br>
-                            <div>
-                                <input class="btn btn-sc font14" type="submit" value="Escolher">
-                            </div>
-                        </form>
-                    </div>
-                    <div style="font-size:50px;text-align:center;color:white;text-shadow: 1px 1px 1px darkgreen">OU</div>
-                    <div class="control-box">
-                        <h6>Escolha a <span>carta de órgão</span> que você quer visualizar:</h6>
+                        <div>
+                            <input class="btn btn-sc font14" type="submit" value="Escolher">
+                        </div>
+                    </form>
+                </div>
+                <div style="font-size:50px;text-align:center;color:white;text-shadow: 1px 1px 1px darkgreen">OU</div>
+                <div class="control-box">
+                    <h6>Escolha a <span>carta de órgão</span> que você quer visualizar:</h6>
+                    <br>
+                    <form action="/intermedium">
+                        <div>
+                            <select class="w80" name="deck" id="cardorgs">
+                                <option value="" disabled selected hidden>Escolha uma carta</option>
+                                <%@cardorgs.sort_by{|card| card.nome}.each do |c|%>
+                                    <option class="f8" value="<%=c.identificacao%>"><%=c.nome%></option>
+                                <%end%>
+                            </select>
+                        </div>
                         <br>
-                        <form action="/intermedium">
-                            <div>
-                                <select class="w80" name="deck" id="cardorgs">
-                                    <option value="" disabled selected hidden>Escolha uma carta</option>
-                                    <%@cardorgs.sort_by{|card| card.nome}.each do |c|%>
-                                        <option class="f8" value="<%=c.identificacao%>"><%=c.nome%></option>
-                                    <%end%>
-                                </select>
-                            </div>
-                            <br>
-                            <div>
-                                <input class="btn btn-sc font14" type="submit" value="Escolher">
-                            </div>
-                        </form>
-                    </div>
+                        <div>
+                            <input class="btn btn-sc font14" type="submit" value="Escolher">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    <%elsif params[:id].include?("SIORG")%>
-        <div class="row">
-            <div class="col-sm-4 auto">
-                <div class="centered font12 w100">
-                    <div class="control-box">
-                        <h6>Escolha a <span>carta de serviço</span> que você quer visualizar:</h6>
-                        <br>
-                        <form action="/intermedium">
-                            <div>
-                                <select class="w80" name="card" id="cards">
-                                    <option value="" disabled selected hidden>Escolha uma carta</option>
-                                    <%@cards.sort_by{|card| card.identificacao}.each do |c|%>
-                                        <option class="f8" value="<%=c.id%>"><%=c.identificacao%> - <%=c.nome%></option>
-                                    <%end%>
-                                </select>
-                            </div>
-                            <br>
-                            <div>
-                                <input class="btn btn-sc font14" type="submit" value="Escolher">
-                            </div>
-                        </form>
-                    </div>
-                    <div style="font-size:50px;text-align:center;color:white;text-shadow: 1px 1px 1px darkgreen">OU</div>
-                    <div class="control-box">
-                        <h6>Escolha a <span>carta de órgão</span> que você quer visualizar:</h6>
-                        <br>
-                        <form action="/intermedium">
-                            <div>
-                                <select class="w80" name="deck" id="cardorgs">
-                                    <option value="" disabled selected hidden>Escolha uma carta</option>
-                                    <%@cardorgs.sort_by{|card| card.nome}.each do |c|%>
-                                        <option class="f8" value="<%=c.identificacao%>"><%=c.nome%></option>
-                                    <%end%>
-                                </select>
-                            </div>
-                            <br>
-                            <div>
-                                <input class="btn btn-sc font14" type="submit" value="Escolher">
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <%if params[:id].nil?%>
+            <div class="col-sm-8 h100">
+                <div></div>
             </div>
+        <%elsif params[:id].include?("SIORG")%>
             <div class="col-sm-8 h100">
                 <div class="card-basic card w40">
                     <div class="card-code f7"><%=@card.identificacao%></div>
@@ -104,51 +62,8 @@
                     <p class="cd-row grow f10">Média de dias de espera: <%=@card.media_duracao.round(2).to_s.gsub(".",",")%></p>
                     <p class="cd-row yrow f10">Nº de serviços sem duração estimada: <%=@card.qtd_nao_estimados%></p>
                 </div>
-            </div>]
-        </div>
-    <%else%>
-        <div class="row">
-            <div class="col-sm-4 auto">
-                <div class="centered font12 w100">
-                    <div class="control-box">
-                        <h6>Escolha a <span>carta de serviço</span> que você quer visualizar:</h6>
-                        <br>
-                        <form action="/intermedium">
-                            <div>
-                                <select class="w80" name="card" id="cards">
-                                    <option value="" disabled selected hidden>Escolha uma carta</option>
-                                    <%@cards.sort_by{|card| card.identificacao}.each do |c|%>
-                                        <option class="f8" value="<%=c.id%>"><%=c.identificacao%> - <%=c.nome%></option>
-                                    <%end%>
-                                </select>
-                            </div>
-                            <br>
-                            <div>
-                                <input class="btn btn-sc font14" type="submit" value="Escolher">
-                            </div>
-                        </form>
-                    </div>
-                    <div style="font-size:50px;text-align:center;color:white;text-shadow: 1px 1px 1px darkgreen">OU</div>
-                    <div class="control-box">
-                        <h6>Escolha a <span>carta de órgão</span> que você quer visualizar:</h6>
-                        <br>
-                        <form action="/intermedium">
-                            <div>
-                                <select class="w80" name="deck" id="cardorgs">
-                                    <option value="" disabled selected hidden>Escolha uma carta</option>
-                                    <%@cardorgs.sort_by{|card| card.nome}.each do |c|%>
-                                        <option class="f8" value="<%=c.identificacao%>"><%=c.nome%></option>
-                                    <%end%>
-                                </select>
-                            </div>
-                            <br>
-                            <div>
-                                <input class="btn btn-sc font14" type="submit" value="Escolher">
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
+        <%else%>
             <div class="col-sm-8 h100">
                 <div class="card-basic card w40">
                     <div class="card-code f7"><%=@card.identificacao%></div>
@@ -163,8 +78,8 @@
                     <p class="cd-row yrow f11">Tempo de espera (dias): <%=@card.duracao == 999999999 ? "Não estimado" : @card.duracao == 0 ? "Imediato" : nmb_form(@card.duracao)%></p>
                 </div>
             </div>
-        </div>
-    <%end%>
+        <%end%>
+    </div>
     <br>
     <br>
 </div>
