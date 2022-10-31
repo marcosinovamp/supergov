@@ -64,7 +64,7 @@ servicos["resposta"].each do |s|
     if @card.unidade == "" || @card.unidade.nil?
         @card.duracao = 999999
     end
-    if @card.unidade = "meses"
+    if @card.unidade == "meses"
         @card.duracao = @card.tempo*30
     end
     @card.save
