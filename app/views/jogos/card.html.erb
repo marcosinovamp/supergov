@@ -75,7 +75,7 @@
                     <p class="cd-row grow f11">Quantidade de etapas: <%=@card.etapas%></p>
                     <p class="cd-row yrow f11">Índice de digitalização: <%=@card.digitalizacao%>%</p>
                     <p class="cd-row grow f11">Tem botão iniciar? <%=@card.botao_iniciar == true ? "Sim" : "Não"%></p>
-                    <p class="cd-row yrow f11">Tempo de espera (dias): <%=@card.duracao == 999999999 ? "Não estimado" : @card.duracao == 0 ? "Imediato" : nmb_form(@card.duracao)%></p>
+                    <p class="cd-row yrow f11">Tempo de espera (dias): <%=@card.duracao == 999999 ? "Não estimado" : @card.duracao == 0 ? "Imediato" : nmb_form(@card.duracao)%></p>
                 </div>
             </div>
         <%end%>
