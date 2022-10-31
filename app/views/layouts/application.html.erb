@@ -14,11 +14,11 @@
     <%= javascript_importmap_tags %>
     <style>
         #loader {
-            border: 180px solid #f3f3f3;
+            border: 50px solid #f3f3f3;
             border-radius: 50%;
-            border-top: 180px solid #444444;
-            width: 500px;
-            height: 500px;
+            border-top: 50px solid #444444;
+            width: 100px;
+            height: 100px;
             animation: spin 1s linear infinite;
             background-color:white;
             z-index:1000;
@@ -66,14 +66,14 @@
         document.onreadystatechange = function() {
             if (document.readyState !== "complete") {
                 document.querySelector(
-                  "body").style.display = "none";
+                  "div.container").style.display = "none";
                 document.querySelector(
                   "#loader").style.visibility = "visible";
             } else {
                 document.querySelector(
                   "#loader").style.display = "none";
                 document.querySelector(
-                  "body").style.display = "inline";
+                  "div.container").style.display = "inline";
             }
         };
     </script>
