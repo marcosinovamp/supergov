@@ -8,8 +8,8 @@
             <%@stack1.each do |s|%>
                 <%@card = Card.find(s)%>
                 <div class="col-sm-3">
-                    <div class="card card-basic f11 w100 h98">
-                        <div class="card-code f9"><%=@card.identificacao%></div>
+                    <div class="card card-basic f11 w100 almost">
+                        <div class="card-code f8"><%=@card.identificacao%></div>
                         <%= image_tag(@card.deck.logo, :class => "logo h100p")%>
                         <br>
                         <p class="name-row f12"><%=@card.nome%></p>
@@ -31,7 +31,7 @@
             <%@stack1.each do |s|%>
                 <%@card = Deck.find(s)%>
                 <div class="col-sm-3">
-                    <div class="card card-basic f10 w100 h98">
+                    <div class="card card-basic f10 w100 almost">
                         <div class="card-code f8"><%=@card.identificacao%></div>
                         <%= image_tag(@card.logo, :class => "logo h100p")%>
                         <br>
